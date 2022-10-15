@@ -11,7 +11,7 @@ import routes from "routes";
 
 function NavbarDark() {
   return (
-    <MKBox variant="gradient" bgColor="dark" shadow="sm" py={0.25}>
+    <MKBox variant="gradient" bgColor="dark" shadow="sm" py={0.25} zIndex={10}>
       <DefaultNavbar
         routes={routes}
         action={{

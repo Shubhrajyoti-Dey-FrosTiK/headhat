@@ -1,5 +1,3 @@
-
-
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -129,7 +127,7 @@ const hotels = [
 
 const Hotels = () => (
   <>
-    <MKBox position="fixed" top="0.5rem" width="100%">
+    <MKBox position="fixed" top="0.5rem" width="100%" zIndex={10}>
       <DefaultNavbar
         routes={routes}
         action={{

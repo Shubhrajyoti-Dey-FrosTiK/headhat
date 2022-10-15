@@ -1,3 +1,4 @@
+import * as React from "react";
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -15,6 +16,13 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
+
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
+import img1 from "assets/images/hotels/img1.jpg";
 
 const hotels = {
   0: {
@@ -128,7 +136,7 @@ const HotelDetails = () => {
   console.log("HotelDetails", id);
   return (
     <>
-      <MKBox position="fixed" top="0.5rem" width="100%">
+      <MKBox position="fixed" top="0.5rem" width="100%" zIndex={10}>
         <DefaultNavbar
           routes={routes}
           action={{
@@ -140,9 +148,43 @@ const HotelDetails = () => {
         />
       </MKBox>
       <MKBox pt={16}>
-        <MKTypography variant="h1" px={16}>
-          {hotels[id].location}
-        </MKTypography>
+        <MKBox display="flex" justifyContent="center">
+          <Card sx={{ width: "90%", paddingX: "4em" }}>
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {hotels[id].location}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {hotels[id].type}
+                </Typography>
+              </CardContent>
+              <MKBox display="flex" justifyContent="center">
+                <CardMedia
+                  component="img"
+                  sx={{ width: "100%", maxHeight: "500px" }}
+                  image={img1}
+                  alt="hotel1"
+                />
+              </MKBox>
+              <MKBox>
+                <Typography gutterBottom variant="h3" component="div">
+                  Select Rooms
+                </Typography>
+                {hotels[id].rooms.map((room) => (
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {room.roomType}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {room.totalRooms - room.roomsBooked} rooms available
+                    </Typography>
+                  </CardContent>
+                ))}
+              </MKBox>
+            </CardActionArea>
+          </Card>
+        </MKBox>
       </MKBox>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
