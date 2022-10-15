@@ -25,6 +25,9 @@ contract SimpleStorage{
     // UserId -> User mapping 
     mapping(uint => User) public users;
 
+    // User address -> Check if user account has already been created
+    mapping(address => uint) public accountCreated;
+
     // UserId -> Service Array consisting of `SERVICE` objects
     mapping(uint => Service[]) public userServices;
 
@@ -201,6 +204,7 @@ contract SimpleStorage{
 
     function addUser(string memory _name, string memory _mobileNo) public returns(uint) {
         userId++;
+        accountCreated[msg.sender] = userId;
         User memory newUser = User(userId,_name,_mobileNo,0,userList.length);
         users[userId] = newUser;
         userList.push(newUser);
@@ -375,6 +379,11 @@ contract SimpleStorage{
 
     function getUsers() public view returns (User[] memory) {
         return userList;
+    }
+
+    function getUserLoginStatus() public view returns (uint) {
+        
+        return accountCreated[msg.sender];
     }
 
     // -----------------------|  GET by ID [ Slow + shows minified result + Not Recommended (Use Index Shown Below) ]  |--------------------------------------//

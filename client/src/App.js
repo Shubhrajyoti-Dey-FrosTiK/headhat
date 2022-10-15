@@ -14,7 +14,7 @@ Coded by www.creative-tim.com
 */
 
 import { useEffect } from "react";
-import { EthProvider } from "./contexts/EthContext";
+import { EthProvider } from "./contexts/EthContext/index.js";
 
 // react-router components
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
@@ -32,19 +32,6 @@ import routes from "routes";
 
 export default function App() {
   const { pathname } = useLocation();
-
-  // const { state: { contract, accounts } } = useEth();
-
-  // const read = async () => {
-  //   // console.log(await contract.methods.addUser("SD","iughi").send({ from: accounts[0] }));
-  //   const value = await contract.methods.getUsers().call({ from: accounts[0] });
-  //   console.log(value)
-  // };
-
-  // useEffect(() => {
-  //   if(contract)
-  //   read();
-  // }, [contract])
 
   // Setting page scroll to 0 when changing the route
   useEffect(() => {
