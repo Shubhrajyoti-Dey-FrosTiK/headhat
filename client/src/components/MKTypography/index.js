@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Material Kit 2 React - v2.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { forwardRef } from "react";
 
 // prop-types is a library for typechecking of props
@@ -23,7 +8,16 @@ import MKTypographyRoot from "components/MKTypography/MKTypographyRoot";
 
 const MKTypography = forwardRef(
   (
-    { color, fontWeight, textTransform, verticalAlign, textGradient, opacity, children, ...rest },
+    {
+      color,
+      fontWeight,
+      textTransform,
+      verticalAlign,
+      textGradient,
+      opacity,
+      children,
+      ...rest
+    },
     ref
   ) => (
     <MKTypographyRoot
@@ -69,7 +63,12 @@ MKTypography.propTypes = {
     "white",
   ]),
   fontWeight: PropTypes.oneOf([false, "light", "regular", "medium", "bold"]),
-  textTransform: PropTypes.oneOf(["none", "capitalize", "uppercase", "lowercase"]),
+  textTransform: PropTypes.oneOf([
+    "none",
+    "capitalize",
+    "uppercase",
+    "lowercase",
+  ]),
   verticalAlign: PropTypes.oneOf([
     "unset",
     "baseline",

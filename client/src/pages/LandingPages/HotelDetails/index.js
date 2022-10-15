@@ -1,5 +1,3 @@
-
-
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -142,7 +140,7 @@ const HotelDetails = () => {
         />
       </MKBox>
       <MKBox pt={16}>
-        <MKTypography variant="h1" align="center">
+        <MKTypography variant="h1" px={16}>
           {hotels[id].location}
         </MKTypography>
       </MKBox>
