@@ -49,7 +49,7 @@ function DefaultNavbarItem({
   return (
     <>
       <MKBox
-        {...rest}
+        // {...rest}
         mx={1}
         p={1}
         display="flex"

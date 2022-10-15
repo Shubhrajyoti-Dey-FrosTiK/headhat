@@ -31,13 +31,22 @@ import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
 
 // Material Kit 2 React example components
-import DefaultNavbarItem from "examples/Navbars/DefaultNavbar/DefaultNavbarItem";
+import DefaultNavbarItem from "./DefaultNavbarItem";
 import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMobile";
 
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-function DefaultNavbar({ brand, routes, transparent, light, action, sticky, relative, center }) {
+function DefaultNavbar({
+  brand,
+  routes,
+  transparent,
+  light,
+  action,
+  sticky,
+  relative,
+  center,
+}) {
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
 
@@ -69,7 +78,14 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
   }, []);
 
   const renderNavbarItems = routes.map(({ name, icon, href, route }) => (
-    <DefaultNavbarItem key={name} name={name} icon={icon} href={href} route={route} light={light} />
+    <DefaultNavbarItem
+      key={name}
+      name={name}
+      icon={icon}
+      href={href}
+      route={route}
+      light={light}
+    />
   ));
 
   return (
@@ -79,19 +95,28 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
         px={{ xs: 4, sm: transparent ? 2 : 3, lg: transparent ? 0 : 2 }}
         my={relative ? 0 : 2}
         mx={relative ? 0 : 3}
-        width={"calc(100% - 48px)"}
+        width={relative ? "100%" : "calc(100% - 48px)"}
         borderRadius="xl"
         shadow={transparent ? "none" : "md"}
         color={light ? "white" : "dark"}
         position={relative ? "relative" : "absolute"}
         left={0}
         zIndex={3}
-        sx={({ palette: { transparent: transparentColor, white }, functions: { rgba } }) => ({
-          backgroundColor: transparent ? transparentColor.main : rgba(white.main, 0.8),
+        sx={({
+          palette: { transparent: transparentColor, white },
+          functions: { rgba },
+        }) => ({
+          backgroundColor: transparent
+            ? transparentColor.main
+            : rgba(white.main, 0.8),
           backdropFilter: transparent ? "none" : `saturate(200%) blur(30px)`,
         })}
       >
-        <MKBox display="flex" justifyContent="space-between" alignItems="center">
+        <MKBox
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <MKBox
             component={Link}
             to="/"
@@ -99,7 +124,11 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
             py={transparent ? 1.5 : 0.75}
             pl={relative || transparent ? 0 : { xs: 0, lg: 1 }}
           >
-            <MKTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
+            <MKTypography
+              variant="button"
+              fontWeight="bold"
+              color={light ? "white" : "dark"}
+            >
               {brand}
             </MKTypography>
           </MKBox>
@@ -163,7 +192,9 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
           borderRadius="xl"
           px={transparent ? 2 : 0}
         >
-          {mobileView && <DefaultNavbarMobile routes={routes} open={mobileNavbar} />}
+          {mobileView && (
+            <DefaultNavbarMobile routes={routes} open={mobileNavbar} />
+          )}
         </MKBox>
       </MKBox>
     </Container>

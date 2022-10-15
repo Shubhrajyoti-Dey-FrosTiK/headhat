@@ -18,9 +18,10 @@ import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
-// import MKInput from "components/MKInput";
-// import MKButton from "components/MKButton";
-// import MKTypography from "components/MKTypography";
+import MKInput from "components/MKInput";
+import MKButton from "components/MKButton";
+import MKTypography from "components/MKTypography";
+import { useParams } from "react-router-dom";
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
@@ -30,11 +31,8 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
-import * as React from "react";
-import HotelCard from "./HotelCard";
-
-const hotels = [
-  {
+const hotels = {
+  0: {
     location: "New York",
     type: "Hotel",
     hotelId: "0",
@@ -60,7 +58,7 @@ const hotels = [
     ],
     reviews: ["Awesome hotel", "Great location", "Good food"],
   },
-  {
+  1: {
     location: "New York",
     type: "Hotel",
     hotelId: "1",
@@ -86,7 +84,7 @@ const hotels = [
     ],
     reviews: ["Awesome hotel", "Great location", "Good food"],
   },
-  {
+  2: {
     location: "New York",
     type: "Hotel",
     hotelId: "2",
@@ -112,7 +110,7 @@ const hotels = [
     ],
     reviews: ["Awesome hotel", "Great location", "Good food"],
   },
-  {
+  3: {
     location: "California",
     type: "BNB",
     hotelId: "3",
@@ -138,36 +136,34 @@ const hotels = [
     ],
     reviews: ["Awesome hotel", "Great location", "Good food"],
   },
-];
+};
 
-const Hotels = () => (
-  <>
-    <MKBox position="fixed" top="0.5rem" width="100%">
-      <DefaultNavbar
-        routes={routes}
-        action={{
-          type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
-          label: "Sign Up",
-          color: "info",
-        }}
-      />
-    </MKBox>
-    <Grid container spacing={4} alignItems="center" py={16} px={4}>
-      {hotels.map(({ hotelId, location, type, rooms, reviews }) => (
-        <HotelCard
-          id={hotelId}
-          location={location}
-          type={type}
-          rooms={rooms}
-          reviews={reviews}
+const HotelDetails = () => {
+  const { id } = useParams();
+  console.log("HotelDetails", id);
+  return (
+    <>
+      <MKBox position="fixed" top="0.5rem" width="100%">
+        <DefaultNavbar
+          routes={routes}
+          action={{
+            type: "external",
+            route: "https://www.creative-tim.com/product/material-kit-react",
+            label: "Sign Up",
+            color: "info",
+          }}
         />
-      ))}
-    </Grid>
-    <MKBox pt={6} px={1} mt={6}>
-      <DefaultFooter content={footerRoutes} />
-    </MKBox>
-  </>
-);
+      </MKBox>
+      <MKBox pt={16}>
+        <MKTypography variant="h1" align="center">
+          {hotels[id].location}
+        </MKTypography>
+      </MKBox>
+      <MKBox pt={6} px={1} mt={6}>
+        <DefaultFooter content={footerRoutes} />
+      </MKBox>
+    </>
+  );
+};
 
-export default Hotels;
+export default HotelDetails;

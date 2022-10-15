@@ -40,6 +40,7 @@ Coded by www.creative-tim.com
 import Icon from "@mui/material/Icon";
 
 import Hotels from "layouts/pages/landing-pages/hotels";
+import HotelDetails from "./layouts/pages/landing-pages/hotel-details";
 
 const routes = [
   {
@@ -59,6 +60,11 @@ const routes = [
     name: "Events",
     icon: <Icon>article</Icon>,
     route: "/events",
+  },
+  {
+    name: "HotelInfo",
+    route: "/hotel/:id",
+    component: <HotelDetails />,
   },
 ];
 
